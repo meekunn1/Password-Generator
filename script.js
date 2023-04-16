@@ -3,6 +3,10 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
+  var poolBase = "abcdefghijklmnopqrstuvwxyz";
+  var poolAddNumber = "0123456789";
+  var poolAddUppercase = poolBase.toUpperCase();
+  var poolAddSpecialCharacter = "\ \!\"\#\$\%\/\&'\(\)\*\+\,\-\.\/\:\;\<\=\>\?\@\[\]\^\_\`\{\|\}\~";
   var scope = {
     characterLength: prompt("Lets begin the password creation process. Please input length of password."),
     cap: confirm("Include upper case?"),
@@ -15,89 +19,52 @@ function writePassword() {
     specialCharacter: "Special Characters ❌",
   }
   if (scope.cap){
-    characterConfirm.cap = "Capital Letters ✅"
+    characterConfirm.cap = "Capital Letters ✅";
+    poolBase = poolBase.concat(poolAddUppercase);
   }
   else {
     // do nothing
   }
   if (scope.number){
-    characterConfirm.number = "Numbers ✅"
+    characterConfirm.number = "Numbers ✅";
+    poolBase = poolBase.concat(poolAddNumber);
   }
   else {
     // do nothing
   }
   if (scope.specialCharacter){
-    characterConfirm.specialCharacter = "Special Characters ✅"
+    characterConfirm.specialCharacter = "Special Characters ✅";
+    poolBase = poolBase.concat(poolAddSpecialCharacter);
   }
   else {
     // do nothing
   }
   var settingCheck = confirm("Password will be " + scope.characterLength + " characters long and will have the following features:\n" + characterConfirm.cap + "\n" + characterConfirm.number + "\n" + characterConfirm.specialCharacter)
-  var poolBase = "abcdefghijklmnopqrstuvwxyz0123456789";
-  var poolAddNumber = "0123456789";
-  var poolAddUppercase = test1.toUpperCase();
-  var poolAddSpecialCharacter = "\ \!\"\#\$\%\/\&'\(\)\*\+\,\-\.\/\:\;\<\=\>\?\@\[\]\^\_\`\{\|\}\~";
+  console.log(poolBase);
+
+  function generatePassword() {
+  var result = "";
+  var counter = 0;
+  while (counter < scope.characterLength) {
+    result += poolBase.charAt(Math.floor(Math.random() * poolBase.length));
+    counter += 1;
+  }
+  return result;
+}
+console.log(generatePassword());
 
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
 
 
-
-//test
-var obj = { 
-  foo: "bar", 
-  baz: 42 };
-console.log(Object.values(obj)); // ['bar', 42]
-
-// Array-like object
-var arrayLikeObj1 = { 0: "a", 1: "b", 2: "c" };
-console.log(Object.values(arrayLikeObj1)); // ['a', 'b', 'c']
-
-// Array-like object with random key ordering
-// When using numeric keys, the values are returned in the keys' numerical order
-var arrayLikeObj2 = { 100: "a", 2: "b", 7: "c" };
-console.log(Object.values(arrayLikeObj2)); // ['b', 'c', 'a']
-
-// getFoo is a non-enumerable property
-var myObj = Object.create(
-  {},
-  {
-    getFoo: {
-      value() {
-        return this.foo;
-      },
-    },
-  },
-);
-myObj.foo = "bar";
-console.log(Object.values(myObj)); // ['bar']
-
-var arrayLikeObj3 = ["a", "b", "c" ];
-console.log(Object.values(arrayLikeObj3));
-console.log(arrayLikeObj3);
-
-// for n loop from previous lecture
-// We use a for-loop to execute code more than once
-for (var i = 0; i < 5; i++) {
-  // This is the block of code that will run each time
-  console.log("This is the current value of i: " + i + ".");
-}
-
-// For-loops are often used to iterate over arrays
-var zooAnimals = ["Bears", "Giraffes", "Penguins", "Meerkats"];
-
-//To determine how many times the loop should execute, we use the array's length
-for (var i = 0; i < zooAnimals.length; i++) { 
-  console.log("I am going to zoo to see " + zooAnimals[i] + ".");
-}
 
 
 //test
