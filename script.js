@@ -3,10 +3,36 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var length = prompt("Lets begin the password creation process. Please input length of password.");
-  var cap = confirm("Include upper case?");
-  var number = confirm("include numbers?");
-  var specialCharacter = confirm("Include special characters?");
+  var scope = {
+    characterLength: prompt("Lets begin the password creation process. Please input length of password."),
+    cap: confirm("Include upper case?"),
+    number: confirm("include numbers?"),
+    specialCharacter: confirm("Include special characters?"),
+  }
+  var characterConfirm = {
+    cap: "Capital Letters ❌",
+    number: "Numbers ❌",
+    specialCharacter: "Special Characters ❌",
+  }
+  if (scope.cap){
+    characterConfirm.cap = "Capital Letters ✅"
+  }
+  else {
+    // do nothing
+  }
+  if (scope.number){
+    characterConfirm.number = "Numbers ✅"
+  }
+  else {
+    // do nothing
+  }
+  if (scope.specialCharacter){
+    characterConfirm.specialCharacter = "Special Characters ✅"
+  }
+  else {
+    // do nothing
+  }
+  var settingCheck = confirm("Password will be " + scope.characterLength + " characters long and will have the following features:\n" + characterConfirm.cap + "\n" + characterConfirm.number + "\n" + characterConfirm.specialCharacter)
   var poolBase = "abcdefghijklmnopqrstuvwxyz0123456789";
   var poolAddNumber = "0123456789";
   var poolAddUppercase = test1.toUpperCase();
