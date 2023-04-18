@@ -46,7 +46,7 @@ function writePassword() {
   else {
     // do nothing
   }
-  var settingCheck = confirm("Password will be " + scope.characterLength + " characters long and will have the following features:\n" + characterConfirm.cap + "\n" + characterConfirm.number + "\n" + characterConfirm.specialCharacter)
+  var settingCheck = confirm("Password will be generated with " + scope.characterLength + " characters and will include the following characters:\n" + characterConfirm.cap + "\n" + characterConfirm.number + "\n" + characterConfirm.specialCharacter)
   
   //check random pull and length
   console.log(poolBase);
@@ -64,7 +64,7 @@ if (settingCheck === true){
   return result;
 }
 else 
-  alert("Please try again if you change your mind.");
+  alert("No Problem. \nPlease try again if you change your mind.");
   return "Your Secure Password";
 }
   var password = generatePassword();
