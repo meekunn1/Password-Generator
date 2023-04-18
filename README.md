@@ -14,7 +14,7 @@ NA
 
 2. Left-click the "Generate Password" button to get started.
 
-3. Please follow the promps to create a random password based on your answer to the promps.
+3. Please follow the prompts to create a random password based on your answer to the prompts.
 
 ## Credits
 
