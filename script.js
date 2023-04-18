@@ -8,15 +8,23 @@ function writePassword() {
   var poolAddUppercase = poolBase.toUpperCase();
   var poolAddSpecialCharacter = "\ \!\"\#\$\%\/\&'\(\)\*\+\,\-\.\/\:\;\<\=\>\?\@\[\]\^\_\`\{\|\}\~";
   var scope = {
-    characterLength: prompt("Lets begin the password creation process. Please input length of password."),
+    characterLength: prompt("Lets begin the password creation process. \n Please input length of password. \n Please input a number between 8 and 128."),
     cap: confirm("Include upper case?"),
-    number: confirm("include numbers?"),
+    number: confirm("Include numbers?"),
     specialCharacter: confirm("Include special characters?"),
   }
+  console.log(scope.characterLength)
   var characterConfirm = {
     cap: "Capital Letters ❌",
     number: "Numbers ❌",
     specialCharacter: "Special Characters ❌",
+  }
+  if (scope.characterLength >= 8 && scope.characterLength <= 128){
+    // do nothing
+  }
+  else {
+    alert("Value entered for length of password was invalid. \n Please try again.");
+    return;
   }
   if (scope.cap){
     characterConfirm.cap = "Capital Letters ✅";
