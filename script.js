@@ -3,17 +3,20 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var poolBase = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz";
+  var poolBase = "";
+  var poolAddLowercase = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz";
   var poolAddNumber = "01234567890123456789";
-  var poolAddUppercase = poolBase.toUpperCase();
+  var poolAddUppercase = poolAddLowercase.toUpperCase();
   var poolAddSpecialCharacter = "\ \!\"\#\$\%\/\&'\(\)\*\+\,\-\.\/\:\;\<\=\>\?\@\[\]\^\_\`\{\|\}\~";
   var scope = {
     characterLength: prompt("Lets begin the password creation process. \n Please input length of password. \n Please input a number between 8 and 128."),
-    cap: confirm("Include Capital Letters?"),
+    normal: confirm("Include Lower Case Letters?"),
+    cap: confirm("Include Upper Case Letters?"),
     number: confirm("Include Numbers?"),
     specialCharacter: confirm("Include Special Characters?"),
   }
   var characterConfirm = {
+    normal: "Lower Case Letters ❌",
     cap: "Capital Letters ❌",
     number: "Numbers ❌",
     specialCharacter: "Special Characters ❌",
@@ -23,10 +26,17 @@ function writePassword() {
   }
   else {
     alert("Value entered for length of password was invalid. \n Please try again.");
-    return;
+    return "Your Secure Password";
+  }
+  if (scope.normal){
+    characterConfirm.normal = "Lower Case Letters ✅";
+    poolBase = poolBase.concat(poolAddLowercase);
+  }
+  else {
+    // do nothing
   }
   if (scope.cap){
-    characterConfirm.cap = "Capital Letters ✅";
+    characterConfirm.cap = "Upper Case Letters ✅";
     poolBase = poolBase.concat(poolAddUppercase);
   }
   else {
@@ -46,7 +56,11 @@ function writePassword() {
   else {
     // do nothing
   }
-  var settingCheck = confirm("Password will be generated with " + scope.characterLength + " characters and will include the following characters:\n" + characterConfirm.cap + "\n" + characterConfirm.number + "\n" + characterConfirm.specialCharacter)
+  if (!scope.normal && !scope.cap && !scope.number && !scope.specialCharacter){
+    alert("Your password will not include any character types. \nPlease select at least one type of character to be included in your password next time.");
+    return "Your Secure Password";
+  }
+  var settingCheck = confirm("Password will be generated with " + scope.characterLength + " characters and will include the following characters:\n" + characterConfirm.normal + "\n" + characterConfirm.cap + "\n" + characterConfirm.number + "\n" + characterConfirm.specialCharacter)
   
   //check random pull and length
   console.log(poolBase);
