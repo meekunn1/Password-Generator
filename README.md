@@ -18,5 +18,7 @@ NA
 
 ## Credits
 
+index.html, style.css, and a portion of javascript was provided by UCI-Coding-Bootcamp.
+
 For this project, I have referenced a code posted by user name "csharptest.net" from the following website:
 https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
